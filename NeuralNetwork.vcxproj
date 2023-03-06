@@ -129,7 +129,6 @@
   <ItemGroup>
     <ClCompile Include="src\Layer.cpp" />
     <ClCompile Include="src\NeuralNetwork.cpp" />
-    <ClCompile Include="src\Neuron.cpp" />
     <ClCompile Include="src\Source.cpp" />
   </ItemGroup>
   <ItemGroup>

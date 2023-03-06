@@ -5,6 +5,7 @@ inline float TahnFunction(float x) { return tanhf(x); }
 inline float SigmoidFunction(float x) { return 1.0f / (1.0f + expf(-x)); }
 inline float ReluFunction(float x) { return x <= 0 ? 0 : x; }
 
+////////////////////////////////////////////////////////////
 Layer::Layer(size_t neuronNumber, size_t connectionNumber, ActivationFunction actFunc)
 {
 	m_neurons.resize(neuronNumber);
@@ -18,12 +19,20 @@ Layer::Layer(size_t neuronNumber, size_t connectionNumber, ActivationFunction ac
 	setConnectionNumber(connectionNumber);
 }
 
+////////////////////////////////////////////////////////////
 Layer::Layer(size_t neuronNumber, size_t connectionNumber) : m_actFunc{nullptr}
 {
 	m_neurons.resize(neuronNumber);
+	// Add bias neuron
+	if (connectionNumber > 0)
+	{
+		m_neurons.emplace_back();
+		m_neurons.back().setValue(1.0f);
+	}
 	setConnectionNumber(connectionNumber);
 }
 
+////////////////////////////////////////////////////////////
 void Layer::setConnectionNumber(size_t connectionNumber)
 {
 	m_connectionNumber = connectionNumber;
@@ -33,6 +42,7 @@ void Layer::setConnectionNumber(size_t connectionNumber)
 	}
 }
 
+////////////////////////////////////////////////////////////
 void Layer::setActivationFunction(ActivationFunction actFunc)
 {
 	switch (actFunc)
@@ -49,6 +59,7 @@ void Layer::setActivationFunction(ActivationFunction actFunc)
 	}
 }
 
+////////////////////////////////////////////////////////////
 void Layer::setNeuronValue(const std::vector<float>& input)
 {
 	for (int i = 0; i < input.size(); ++i)
@@ -57,6 +68,7 @@ void Layer::setNeuronValue(const std::vector<float>& input)
 	}
 }
 
+////////////////////////////////////////////////////////////
 std::vector<float> Layer::getNeuronValue()
 {
 	std::vector<float> neuronValue;
@@ -67,6 +79,7 @@ std::vector<float> Layer::getNeuronValue()
 	return neuronValue;
 }
 
+////////////////////////////////////////////////////////////
 void Layer::feedForward(Layer* next)
 {
 	for (int i = 0; i < m_connectionNumber; ++i)
