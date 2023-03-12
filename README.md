@@ -1,1 +1,3 @@
 # NeuralNetwork
+
+Neural network implementation.
