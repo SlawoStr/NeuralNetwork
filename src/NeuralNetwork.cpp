@@ -4,6 +4,14 @@
 ////////////////////////////////////////////////////////////
 NeuralNetwork::NeuralNetwork(size_t inputSize, size_t outputSize, ActivationFunction outActFunc) : m_inputSize{ inputSize }, m_outputSize{ outputSize }
 {
+	if (inputSize == 0)
+	{
+		throw NetworkInputExcepction{ "Error: Network input layer size must be bigger than 0" };
+	}
+	if (outputSize == 0)
+	{
+		throw NetworkInputExcepction{ "Error: Network output layer size must be bigger than 0" };
+	}
 	m_layers.emplace_back(m_inputSize, m_outputSize);
 	m_layers.emplace_back(m_outputSize, 0, outActFunc);
 }
@@ -13,7 +21,7 @@ void NeuralNetwork::addLayer(size_t neuronNumber, ActivationFunction actFunc)
 {
 	if (neuronNumber == 0)
 	{
-		throw NetworkInputExcepction("Error: Size of layer cant be equal to 0");
+		throw NetworkInputExcepction("Error: Size of network hidden layer muse be bigger than 0");
 	}
 	auto it = m_layers.insert(m_layers.end() - 1, Layer{ neuronNumber,m_outputSize,actFunc });
 	std::prev(it)->setConnectionNumber(neuronNumber);

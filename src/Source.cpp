@@ -4,10 +4,10 @@
 int main()
 {
 	// Set Up
-	NeuralNetwork network(100, 5, ActivationFunction::SIGMOID);
+	NeuralNetwork network(10, 5, ActivationFunction::RELU);
 	network.addLayer(10, ActivationFunction::TANH);
 	network.addLayer(20, ActivationFunction::RELU);
-	std::vector<float>test(100);
+	std::vector<float>test(10);
 
 	// Network weights
 	std::vector<float> input(network.getNetworkWeightSize());

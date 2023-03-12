@@ -133,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Layer.h" />
+    <ClInclude Include="src\NetworkEnum.h" />
     <ClInclude Include="src\NetworkInputExcepction.h" />
     <ClInclude Include="src\NeuralNetwork.h" />
     <ClInclude Include="src\Neuron.h" />

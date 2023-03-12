@@ -2,16 +2,7 @@
 #include <vector>
 #include <functional>
 #include "Neuron.h"
-
-/// <summary>
-/// Supported activation functions
-/// </summary>
-enum class ActivationFunction
-{
-	RELU,
-	TANH,
-	SIGMOID,
-};
+#include "NetworkEnum.h"
 
 /// <summary>
 /// Neural network layer representation
