@@ -1,3 +1,3 @@
 # NeuralNetwork
 
-Neural network implementation.
+Implementation of feed forward fully connection neural network.
