@@ -2,6 +2,8 @@
 
 Implementation of feed forward fully connected neural network.
 
+# Usage example
+
 ```c
 const size_t inputSize = 10;
 const size_t outputSize = 5;
